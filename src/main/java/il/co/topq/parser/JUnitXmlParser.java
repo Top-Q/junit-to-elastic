@@ -42,7 +42,7 @@ public class JUnitXmlParser extends DefaultHandler implements Parser {
 		tests = new ArrayList<ElasticsearchTest>();
 		globalProperties = new HashMap<String, String>();
 	}
-
+	
 	@Override
 	public void characters(char ch[], int start, int length) throws SAXException {
 		if (null == currentContent || null == currentTest) {
@@ -120,9 +120,6 @@ public class JUnitXmlParser extends DefaultHandler implements Parser {
 		if (null != properties.get("time")) {
 			currentTest.setDuration(Double.parseDouble(properties.get("time")));
 		}
-//		HashMap<String,String> m = new HashMap<String,String>();
-//		m.put("foo", "bar");
-//		currentTest.setProperties(new HashMap<String,String>(m));
 		currentTest.setProperties(new HashMap<String,String>(globalProperties));
 
 	}
